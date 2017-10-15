@@ -16,12 +16,10 @@ Start:
 
 	ldr r1, =GPIO_PORT_DOUTCLR
 	add r1, r0, r1      // r1 er base + portsize*ledport
-	                    // verdien  paa r0 vil sette led til lav
 
 	ldr r2, =GPIO_PORT_DOUTSET
 	add r0, r0, r2      // r0 er base + portsize*ledport + port_doutset
-	                    // verdien  paa r0 vil sette led til høy
-
+	
 	ldr r2, =GPIO_BASE
 	ldr r3, =PORT_SIZE
 	ldr r4, =BUTTON_PORT
@@ -37,14 +35,14 @@ Start:
 	lsl r4, BUTTON_PIN
 
 Loop:
-	ldr r6, [r2]    //setter r6 lik verdien på r2, altså knappens tilstand
+	ldr r6, [r2]    //setter r6 lik verdien pÃ¥ r2, altsÃ¥ knappens tilstand
 	and r6, r6, r4  //and-er med button output
 	cmp r6, r4      //ser om r6 && r4 er lik r5
 	bne LedOn       //branch if not equal
 	str r3, [r1]    //led av
 	b Loop          //tilbake til loop (idle loop)
 LedOn:
-	str r3, [r0]    //led på
+	str r3, [r0]    //led pÃ¥
 	b Loop          //tilbake til loop
 
 NOP // Behold denne paa bunnen av fila
