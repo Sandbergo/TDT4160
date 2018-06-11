@@ -1,2 +1,2 @@
 # TDT4160
-Compters and Digital Design, NTNU Fall 2017
+Computers and Digital Design, NTNU Fall 2017
